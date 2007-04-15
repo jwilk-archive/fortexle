@@ -1,0 +1,35 @@
+\documentclass{article}
+
+% <requisites>
+
+\usepackage[normalem]{ulem}
+\usepackage{color}
+
+% </requisites>
+
+% <trunk>
+
+\makeatletter
+\newbox\misspelled@tmpbox
+\def\misspelled#1{%
+  \setbox\misspelled@tmpbox\hbox{{#1}}%
+  {\color{red}\uwave{\phantom{\copy\misspelled@tmpbox}}}%
+  \hskip-\wd\misspelled@tmpbox\relax\box\misspelled@tmpbox\relax%
+}
+\makeatother
+
+% </trunk>
+
+\pagestyle{empty}
+
+\begin{document}
+
+% <example>
+
+Bad \misspelled{speling}.
+
+% <example>
+
+\end{document}
+
+% vim:ts=2 sw=2 et

@@ -1,0 +1,39 @@
+\documentclass{article}
+
+% <trunk>
+
+\newcounter{savedenumi}
+\newcommand{\saveenumi}{\setcounter{savedenumi}{\value{enumi}}}
+\newcommand{\restoreenumi}{\setcounter{enumi}{\value{savedenumi}}}
+
+% </trunk>
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+% <example>
+
+
+Lorem:
+\begin{enumerate}
+\item nullam
+\item tempor
+\item auctor
+\saveenumi
+\end{enumerate}
+
+Impsum:
+\begin{enumerate}
+\restoreenumi
+\item orci
+\item vivamus
+\saveenumi
+\end{enumerate}
+
+% <example>
+
+\end{document}
+
+% vim:ts=2 sw=2 et

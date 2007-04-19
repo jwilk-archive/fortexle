@@ -1,0 +1,62 @@
+#!/usr/bin/perl
+use strict;
+use warnings;
+
+my ($filename) = @ARGV;
+
+open IN, '<', "$filename.tex";
+
+my $target = undef;
+my %buckets;
+while (<IN>)
+{
+  if (m{^% <([a-z]+)>$})
+  {
+    $target = $1;
+    $buckets{$target} = '';
+    next;
+  }
+  if (m{^% </[a-z]+>$})
+  {
+    $target = undef;
+  }
+  next unless defined $target;
+  $buckets{$target} .= $_;
+}
+
+close IN;
+
+foreach (keys %buckets)
+{
+  $buckets{$_} =~ s/^\s+//m;
+  $buckets{$_} =~ s/\s+$//m;
+}
+
+if (defined $buckets{'requisites'})
+{
+  $_ = $buckets{'requisites'};
+  s/&/&amp;/; s/</&lt;/; s/>/&gt;/;
+  print "<div>\n<h1>Requisites</h1>\n<pre>\n$_\n</pre>\n</div>\n";
+}
+
+if (defined $buckets{'trunk'})
+{
+  $_ = $buckets{'trunk'};
+  s/&/&amp;/; s/</&lt;/; s/>/&gt;/;
+  print "<div>\n<h1>Solution</h1>\n<pre>\n$_\n</pre>\n</div>\n";
+}
+
+if (defined $buckets{'example'})
+{
+  $_ = $buckets{'example'};
+  s/&/&amp;/; s/</&lt;/; s/>/&gt;/;
+  print "<div>\n<h1>Example of use</h1>\n<pre>\n$_\n</pre>\n</div>\n";
+}
+
+my $fileinfo = `/usr/bin/file "$filename.png"`;
+$fileinfo =~ m{ ([0-9]+) x ([0-9]+),};
+my ($width, $height) = ($1, $2);
+
+print "<div>\n<h1>Result</h1>\n<img src='$filename.png width='$width' heihgt='$height'/>\n</div>\n";
+
+# vim:ts=2 sw=2 et

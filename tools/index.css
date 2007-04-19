@@ -1,0 +1,36 @@
+* 
+{
+  font-family: 'Bitsream Vera Sans', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  padding: 0ex; margin: 0ex;
+}
+
+pre
+{
+  font-family: 'Bitstream Vera Sans Mono', monospace;
+}
+
+h1
+{
+  color: #446;
+  font-size: 1.5em;
+}
+
+div
+{
+  margin: 0.7ex;
+}
+
+div + div
+{
+  border-top: dashed #444 1px;
+}
+
+div div
+{
+  border-top: none;
+  padding: 0.5ex;
+}
+
+/* vim:set ts=2 sw=2 et:*/

@@ -1,12 +1,17 @@
 TEXFILES = $(wildcard *.tex)
 PNGFILES = $(TEXFILES:.tex=.png)
 
+TEX2HTML = tools/tex2html
+CSSFILE = tools/index.css
+
 .PHONY: all clean
-all: $(PNGFILES)
+all: $(PNGFILES) $(TEX2HTML) $(CSSFILE)
+	$(TEX2HTML) $(TEXFILES) > html/index.html
+	ln -f $(CSSFILE) html/index.css
+	ln -f $(PNGFILES) html/
 
 clean:
-	$(RM) *.aux *.dvi *.log *.png	
-
+	$(RM) *.aux *.dvi *.log *.png html/*
 
 %.dvi: %.tex
 	latex $(<)

@@ -17,6 +17,6 @@ clean:
 	latex $(<)
 
 %.png: %.dvi
-	dvipng -D 300 -T tight -o /dev/stdout $(<) | gm convert -border 16x16 -bordercolor white PNG:- $(@)
+	dvipng -D 200 -T tight -o /dev/stdout $(<) | gm convert -border 16x16 -bordercolor white PNG:- $(@)
 
 # vim:ts=4 sw=4

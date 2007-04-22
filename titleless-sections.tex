@@ -1,0 +1,43 @@
+\documentclass{article}
+
+\usepackage[width=6cm]{geometry}
+
+% <trunk>
+
+\let\oldsubsection\subsection
+\def\subsection#1
+{
+  \def\tmpa{}
+  \def\tmpb{#1}
+  \ifx\tmpa\tmpb
+  {
+    \edef\addcontentsline##1##2##3{}
+    \oldsubsection{}
+  }
+  \else
+    \oldsubsection{\tmpb}
+  \fi
+}
+
+% </trunk>
+
+\pagestyle{empty}
+
+\begin{document}
+
+% <example>
+
+\tableofcontents
+
+\newpage
+
+\section{Suspendisse}
+\subsection{Auctor}
+\subsection{}
+\subsection{Tempor}
+
+% </example>
+
+\end{document}
+
+% vim:ts=2 sw=2 et

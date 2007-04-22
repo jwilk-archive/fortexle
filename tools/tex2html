@@ -10,7 +10,7 @@ print <<EOF
 <head>
 <base href='http://jw209508.hopto.org/fortexle/'/>
 <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
-<title>ForTeXle</title>
+<title>ForTeXle, i.e. LaTeX tricks</title>
 <link rel='stylesheet' href='index.css' type='text/css'/>
 </head>
 <body>

@@ -11,7 +11,13 @@ all: $(PNGFILES) $(TEX2HTML) $(CSSFILE)
 	ln -f $(PNGFILES) html/
 
 clean:
-	$(RM) *.aux *.dvi *.log *.png html/*
+	$(RM) *.aux *.dvi *.log *.png html/* xyling.sty
+
+xyling.dvi: xyling.sty
+
+xyling.sty:
+	wget http://tug.ctan.org/macros/latex/contrib/xyling/xyling.sty
+	sed -i -e 's/\RequirePackage\[color,all,dvips\]{xy}/\RequirePackage[color,all]{xy}/' xyling.sty
 
 %.dvi: %.tex
 	latex $(<)

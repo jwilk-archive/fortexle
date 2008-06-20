@@ -6,7 +6,7 @@ CSSFILE = tools/index.css
 
 .PHONY: all clean
 all: $(PNGFILES) $(TEX2HTML) $(CSSFILE)
-	$(TEX2HTML) $(TEXFILES) > html/index.html
+	$(TEX2HTML) $(TEXFILES) | xmllint --encode ASCII - > html/index.html
 	ln -f $(CSSFILE) html/index.css
 	ln -f $(PNGFILES) html/
 

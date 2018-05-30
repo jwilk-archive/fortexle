@@ -27,4 +27,4 @@ xyling.sty: $(xyling_sty)
 %.png: %.dvi
 	dvipng -D 200 -T tight -o /dev/stdout $(<) | gm convert -border 16x16 -bordercolor white PNG:- $(@)
 
-# vim:ts=4 sw=4
+# vim:ts=4 sts=4 sw=4 noet

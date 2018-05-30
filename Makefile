@@ -16,9 +16,10 @@ clean:
 
 xyling.dvi: xyling.sty
 
-xyling.sty:
-	wget http://tug.ctan.org/macros/latex/contrib/xyling/xyling.sty
-	sed -i -e 's/\RequirePackage\[color,all,dvips\]{xy}/\RequirePackage[color,all]{xy}/' xyling.sty
+xyling_sty = $(shell kpsewhich xyling.sty)
+xyling.sty: $(xyling_sty)
+	sed -e 's/\RequirePackage\[color,all,dvips\]{xy}/\RequirePackage[color,all]{xy}/' < $(<) > $(@).tmp
+	mv $(@).tmp $(@)
 
 %.dvi: %.tex
 	latex $(<)

@@ -12,7 +12,7 @@ all: $(PNGFILES) $(TEX2HTML) $(CSSFILE)
 	ln -f $(PNGFILES) html/
 
 clean:
-	$(RM) *.aux *.dvi *.log *.png html/* xyling.sty
+	rm -rf *.aux *.dvi *.log *.png html/ xyling.sty
 
 xyling.dvi: xyling.sty
 

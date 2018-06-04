@@ -27,4 +27,6 @@ xyling.sty: $(xyling_sty)
 %.png: %.dvi
 	dvipng -D 200 -T tight -o /dev/stdout $(<) | gm convert -border 16x16 -bordercolor white PNG:- $(@)
 
+.error = GNU make is required
+
 # vim:ts=4 sts=4 sw=4 noet

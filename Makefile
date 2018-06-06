@@ -1,3 +1,6 @@
+# Copyright © 2007-2018 Jakub Wilk <jwilk@jwilk.net>
+# SPDX-License-Identifier: MIT
+
 TEXFILES = $(wildcard *.tex)
 PNGFILES = $(TEXFILES:.tex=.png)
 

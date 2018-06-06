@@ -69,6 +69,7 @@ for my $filename (@ARGV)
   }
 
   my $fileinfo = qx(file "$filename.png");
+  $? == 0 or die;
   $fileinfo =~ m{ ([0-9]+) x ([0-9]+),};
   my ($width, $height) = ($1, $2);
 

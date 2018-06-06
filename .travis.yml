@@ -1,0 +1,22 @@
+language: generic
+dist: trusty
+sudo: false
+addons:
+  apt:
+    packages:
+    - dvipng
+    - file
+    - graphicsmagick
+    - libxml2-utils
+    - texlive-binaries
+    - texlive-fonts-recommended
+    - texlive-generic-recommended
+    - texlive-humanities
+    - texlive-lang-cyrillic
+    - texlive-lang-greek
+    - texlive-latex-base
+    - texlive-latex-extra
+script:
+- make
+
+# vim:ts=2 sts=2 sw=2 et

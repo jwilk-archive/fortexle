@@ -20,9 +20,11 @@ clean:
 xyling.dvi: xyling.sty
 
 xyling_sty = $(shell kpsewhich xyling.sty)
+ifneq "$(xyling_sty)" ""
 xyling.sty: $(xyling_sty)
 	sed -e 's/\RequirePackage\[color,all,dvips\]{xy}/\RequirePackage[color,all]{xy}/' < $(<) > $(@).tmp
 	mv $(@).tmp $(@)
+endif
 
 %.dvi: %.tex
 	latex $(<)
